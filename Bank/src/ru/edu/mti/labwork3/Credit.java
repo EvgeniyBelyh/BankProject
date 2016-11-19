@@ -56,7 +56,35 @@ public class Credit {
 	public void setClient(Client client) {
 		this.client = client;
 	}
-
+	
+	
+	/**
+	 * –ассчитывает дифференцированный платеж
+	 * @param creditAmount - сумма кредита
+	 * @param period - срок периода в мес€цах
+	 * @param rate - ставка
+	 * @param periodNumber - номер мес€ца
+	 * @return дифференцированный мес€чный платеж
+	 */
+	public static double calcDiffPayment(double creditAmount, int period, double rate, int periodNumber) {
+		rate = rate/12;
+		return creditAmount/period + creditAmount * (period - periodNumber + 1) * rate/period;
+	}
+	
+	
+	/**
+	 * –ассчитывает аннуитетный платеж
+	 * @param creditAmount - сумма кредита
+	 * @param period - срок периода в мес€цах
+	 * @param rate - ставка
+	 * @return аннуитетный платеж
+	 */
+	public static double calcAnnuityPyment(double creditAmount, int period, double rate) {
+		rate = rate/12;
+		return creditAmount*rate/(1 - 1/Math.pow((1+rate),period));
+	}
+	
+	
 	/**
 	 * метод погашени€ платежа
 	 * @param payment - способ расчета

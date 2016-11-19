@@ -45,10 +45,22 @@ public class Client {
 		this.middleName = middleName;
 	}
 	
+	/**
+	 * Возвращает полное имя клиента
+	 * @param lastName - Фамилия
+	 * @param firstName - Имя
+	 * @param middleName - Отчество
+	 * @return ФИО
+	 */
+	public static String getFullName(String lastName, String firstName, String middleName) {
+		return lastName + " " + firstName + " " + middleName;
+	}
+	
+	
 	//переопределяем метод вывода в консоль
 	@Override
 	public String toString() {
-		return this.lastName + " " + this.firstName + " " + this.middleName;
+		return Client.getFullName(this.lastName, this.firstName, this.middleName);
 	}
 	
 	
